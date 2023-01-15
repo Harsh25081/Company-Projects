@@ -1,19 +1,18 @@
 const express = require("express")
-const { CreateStudent, getStudents, getStudent, deletestudent, updateStudent } = require("../controllers/studentController")
-const { userRegister, login } = require("../controllers/userControllers")
+const { CreateUser, AdminLogin, StudentLogin } = require("../controllers/userController")
+const { CreateQuestion, GetAllQuestion } = require("../controllers/questionController")
 const router = express.Router()
 
-router.post("/test-me",()=>{
-    console.log("This is the Test API !!!!")
+router.post("/test-me",(req,res)=>{
+    res.send("This is the test API!!")
 })
 
-router.post("/register",userRegister)
-router.post("/login",login)
-router.post("/students",CreateStudent)
-router.get("/getallstudents",getStudents)
-router.get("/getstudent",getStudent)
-router.put("/updatestudent",updateStudent)
-router.delete("/deletestudent",deletestudent)
+router.post("/createuser",CreateUser)
+router.post("/adminlogin",AdminLogin)
 
+router.post("/studentlogin",StudentLogin)
+
+router.post("/createquestion",CreateQuestion)
+router.get("/getallquestion",GetAllQuestion)
 
 module.exports = router
